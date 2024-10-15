@@ -1,0 +1,64 @@
+#inputelement::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  font-size: 14px;
+}
+#inputelement::-moz-placeholder {
+  /* Firefox 19+ */
+  font-size: 14px;
+}
+#inputelement:-ms-input-placeholder {
+  /* IE 10+ */
+  font-size: 14px;
+}
+#inputelement:-moz-placeholder {
+  /* Firefox 18- */
+  font-size: 14px;
+}
+
+#inputelement::-webkit-input {
+  /* Chrome/Opera/Safari */
+  font-size: 14px;
+}
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
+}
+
+.react-datepicker__input-container {
+  text-align: left;
+}
+
+.react-datepicker-popper {
+  z-index: 20 !important;
+}
+
+.dateRangeDiv {
+  z-index: 20 !important;
+}
+
+.openSans::-webkit-input-placeholder {
+  font-weight: 500;
+}
+.openSans::-moz-placeholder {
+  font-weight: lighter;
+}
+.openSans::-ms-input-placeholder {
+  font-weight: lighter;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+  font-family: "Roboto";
+}
+.date-picker-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}

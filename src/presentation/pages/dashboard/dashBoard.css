@@ -1,0 +1,190 @@
+.con_value {
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
+  align-items: center;
+  justify-content: space-around;
+  background-color: "";
+  width: 100%;
+  /* height: 100%; */
+  font-size: 30px;
+}
+
+/* Container 1 */
+.container1 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 10px;
+  width: 20%;
+  height: 75%;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.249);
+  text-align: center;
+  font-weight: bold;
+  padding-top: 5px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+/* .container1:before {
+  content:" ";
+  position: absolute;
+  bottom: 90px; 
+  left: 10px; 
+  width: 60px;
+  height: 2px;
+  background-color: #fc9414;
+  transition: all 0.5s ease;
+} */
+.container1:hover {
+  color: black;
+  background-color: #fff0dd;
+  width: 120;
+}
+
+.con1 {
+  border: 1px solid #fc9414;
+  width: 60px;
+  height: "";
+  transition: all 0.5s ease;
+}
+
+.container1:hover > .con1 {
+  border: 1px solid #fc9414;
+  width: 160px;
+  height: "";
+}
+
+/* container 2 */
+
+.container2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 9px;
+  width: 20%;
+  height: 75%;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.249);
+  text-align: center;
+  font-weight: bold;
+  padding-top: 5px;
+}
+.container2:hover {
+  color: black;
+  background-color: #dfe6ff;
+  width: 120;
+}
+
+.con2 {
+  border: 1px solid #2645c3;
+  width: 60px;
+  height: "";
+  transition: all 0.5s ease;
+}
+
+.container2:hover > .con2 {
+  border: 1px solid #2645c3;
+  width: 140px;
+  height: "";
+}
+
+/* container 3 */
+
+.container3 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 9px;
+  width: 20%;
+  height: 75%;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.249);
+  text-align: center;
+  font-weight: bold;
+  padding-top: 5px;
+}
+.container3:hover {
+  color: black;
+  background-color: #ffe0e0;
+  width: 120;
+}
+
+.con3 {
+  border: 1px solid #ff7f7f;
+  width: 60px;
+  height: "";
+  transition: all 0.5s ease;
+}
+
+.container3:hover > .con3 {
+  border: 1px solid #ff7f7f;
+  width: 130px;
+  height: "";
+}
+
+
+.payin {
+  display: flex;
+  /* background-color: green; */
+  width: 750px;
+  height: 380px;
+  margin: auto;
+  line-height: 5px;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+}
+@media screen and (min-width: 1700px) {
+  .payin {
+    display: flex;
+    /* background-color: red; */
+    width: 1000px;
+    height: 600px;
+    margin: auto;
+  }
+}
+
+.dashboardcenter {
+  width: 100%;
+  height: 90vh;
+  background-color: #f2f0f0;
+  /* border:2px solid red; */
+}
+@media screen and (max-width: 1350px) {
+  .dashboardcenter {
+    width: 100%;
+    height: 100%;
+    background-color: #f2f0f0;
+    /* border:2px solid green; */
+  }
+}
+
+.form {
+  border: none;
+  color: black;
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+.graph_button {
+  width: 100px;
+  height: 25px; 
+  border-radius: 5px;
+  background-color: white;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.249) ;
+}
+.graph_button:hover {
+  width: 106px;
+  height: 28px;
+  font-weight: bold;
+}

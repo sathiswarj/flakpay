@@ -1,0 +1,12 @@
+.table-mobile, .table-desktop {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table-mobile th, .table-mobile td,
+  .table-desktop th, .table-desktop td {
+    padding: 10px;
+    border: 1px solid black;
+    color:rgba(255, 140, 0, 0.164);
+    color: rgba(255, 140, 0, 0.364);
+  }

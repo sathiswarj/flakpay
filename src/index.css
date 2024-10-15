@@ -1,0 +1,62 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic,900,900italic,300italic,300,100italic,100);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap);
+
+* {
+  /* font-family: Montserrat, sans-serif; */
+  /* font-family: "Fuggles", cursive; */
+  font-family: "Montserrat", sans-serif;
+  /* font-family: "Poppins", sans-serif; */
+}
+
+.MuiMenuItem-root {
+  display: block; /* Block ensures each item takes the full width and stacks vertically */
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+}
+.roboto {
+  font-family: "Roboto";
+}
+
+/* Scroll bar stylings */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--lightestgrey); 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 3px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+p {
+  color: black;
+}
+
+::-webkit-input-placeholder {
+  color: black;
+} /* Chrome/Opera/Safari */
+::-moz-placeholder {
+  color: black;
+} /* Firefox 19+ */
+:-ms-input-placeholder {
+  color: black;
+} /* IE 10+ */
+:-moz-placeholder {
+  color: black;
+} /* Firefox 18- */

@@ -1,0 +1,52 @@
+
+
+.webhook {
+  
+  padding: 0;
+ }
+
+ .webhook {
+  border: 1px solid #ABABAB;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 3px;
+  padding: 9px 4px 9px 40px;
+  background: transparent url("../../../Assets/svg/webhook.svg") no-repeat 13px center;
+
+}
+
+.opt{
+  /* font-weight: bold; */
+  cursor: pointer;
+}
+/* .opt :hover {
+  box-shadow: 0 0 10px 100px #056588 inset; */
+
+  /* option:hover {
+    background-color: yellow;
+  } */
+  /* select:focus > option:hover { 
+    background: #4499ca !important;
+} */
+/* select option:hover {
+  box-shadow: 0 0 10px 100px green inset;
+  color:white;
+}
+select option:checked{
+  box-shadow: 0 0 10px 100px green inset;
+  } */
+select {
+  background-color: rgb(255, 255, 255);
+
+
+  
+}
+/* select option{
+  height: 67;
+} */
+
+option{zoom: 1.3} 
+
+select option:hover {
+  background: #547cd1;
+}

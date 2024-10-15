@@ -1,0 +1,33 @@
+.enable{
+    border: none;
+    background-color: rgba(144, 238, 144, 0.574);
+    color: green;
+    outline: none;
+    font-weight: 700;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+.disable{
+    border: none;
+    background-color: rgba(255, 0, 0, 0.232);
+    color: red;
+    outline: none;
+    font-weight: 700;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.servicepro{
+    width: 150px;
+    height: 30px;
+    border-radius: none;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    color: #000000;
+    font-weight: bold;
+    background: rgba(173, 216, 230, 0.368);
+    cursor: pointer;
+}

@@ -1,0 +1,30 @@
+.password {
+  cursor: pointer;
+  border: none;
+  background-color: #fae6cdbf;
+  font-size: 17px;
+  text-decoration-line: none;
+  color: #fc9414;
+  border-radius: 5px;
+}
+
+.password:hover {
+  background-color: white;
+  font-weight: bolder;
+  text-decoration: underline;
+}
+
+.account {
+  cursor: pointer;
+  border: none;
+  background-color: #b7c3f293;
+  font-size: 17px;
+  text-decoration-line: none;
+  color: #142464;
+  border-radius: 5px;
+}
+.account:hover {
+  background-color: white;
+  font-weight: bolder;
+  text-decoration: underline;
+}
