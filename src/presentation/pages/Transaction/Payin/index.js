@@ -324,7 +324,6 @@ function PayInTransaction() {
             // opacity: openFilter ? 1 : 0,
             transition: "visibility 0.5s, opacity 0.5s linear",
             marginBottom: "20px",
-            backgroundColor: "white",
           }}
         >
           <CustomFilter
