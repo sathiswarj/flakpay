@@ -107,7 +107,7 @@ const ConfirureServiceProvider = ({ onClickNextStep, clientId }) => {
           >
             {allServicesList?.map((item) => {
               return (
-                <MenuItem value={item} key={item}>
+                <MenuItem value={item} key={item} style={{display:"block", paddingTop:"6px"}}>
                   {item === "Choose Service Provider"
                     ? item
                     : item.split(" / ")[0] + " - " + item.split(" / ")[1]}

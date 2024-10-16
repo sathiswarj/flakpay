@@ -12,6 +12,7 @@ import { ApiRequestPost } from "../../../data/network/services/ApiRequestPost.js
 import ClientDetailsPopupHome from "./ClientDetails/index.js";
 import { CustomFilter } from "../../components/CustomFilter.js";
 import Loader from "../../components/loader/loader.js";
+import AddClientHome from "./AddClientSteps/home.js";
 
 function Client() {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ function Client() {
 
   const [showAddClientDialog, setShowAddClientDialog] = useState(false);
   const [addClientActionLoading, setAddClientActionLoading] = useState(false);
-
+  
   const [showViewMoreDialog, setShowViewMoreDialog] = useState(false);
   const [selectedClientForViewMore, setSelectedClientForViewMore] = useState({});
 
@@ -275,7 +276,7 @@ function Client() {
         showAddButton={true}
         addButtonText={"Add Client"}
         onClickAddButton={() => {
-          navigate("/AddClient");
+          setShowAddClientDialog(true);
         }}
       >
         {/* <FilterPopup
@@ -288,6 +289,21 @@ function Client() {
           }}
         /> */}
       </Header>
+    
+      <DialogComponent
+        showPopup={showAddClientDialog}
+        onClickCloseDialog={() => {
+          setShowAddClientDialog(false);
+          navigate('/client')
+        }}
+        heading={"Add Client"}
+      >
+        <AddClientHome  onUserAdded={() => {
+                setShowAddClientDialog(false); 
+                getAllClientsList(); 
+            }} />
+        </DialogComponent>
+
 
       <DialogComponent
         showPopup={showViewMoreDialog}

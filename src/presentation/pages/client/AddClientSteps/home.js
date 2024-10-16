@@ -15,18 +15,7 @@ const AddClientHome = () => {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-      <div style={{ display: "flex" }}>
-        <IconButton
-          onClick={() => navigate("/client")}
-          edge="start"
-          color="inherit"
-          aria-label="back"
-          sx={{ marginRight: 1 }}
-        >
-          <ArrowBackIcon />
-        </IconButton>
-        <h2>Add Client</h2>
-      </div>
+      
       <div>
         <Stepper activeStep={activeStep} alternativeLabel>
           {steps.map((label, index) => (

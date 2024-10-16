@@ -14,7 +14,7 @@ const DialogComponent = ({ showPopup, onClickCloseDialog, maxWidth, heading, chi
     <Dialog
       PaperProps={{
         sx: {
-          overflowY: "hidden",
+          overflowX: "auto",
           borderRadius: 15,
           width: width * 0.8,
         },
