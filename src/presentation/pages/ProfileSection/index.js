@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "../../components/Header";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import secureStorage from "../../../utility/secureStorage";
 import { ProfileDetailsHeader } from "../../../data/local/constants/TableHeaders";
 import { ApiRequestGet } from "../../../data/network/services/ApiRequestGet";
@@ -9,6 +8,8 @@ import Card from "./card";
 
 function ProfileSection() {
   const [data, setData] = useState([]);
+  const [input1, setInput1] = useState("");
+  const [input2, setInput2] = useState("");
 
   const getClientLists = (clientId) => {
     ApiRequestGet.getClientByClientId(clientId)
@@ -28,50 +29,40 @@ function ProfileSection() {
     const clientIdFromSS = secureStorage.getItem("clientId");
     getClientLists(clientIdFromSS);
   }, []);
+
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "100%", width: "100%" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+        width: "100%",
+        border: "1px solid #ccc", // Border box styling
+        padding: "20px", // Add some padding inside the border
+        borderRadius: "8px", // Optional: border radius for rounded corners
+      }}
+    >
       <Header heading="Profile" />
-      <div style={{ display: "flex", flexWrap: "wrap" }}>
-        {ProfileDetailsHeader.map((item) => {
-          return <Card label={item.label} value={data[item.key]} />;
-        })}
-      </div>
-      {/* <div
-        style={{
-          width: "50%",
-          height: "400px",
-          boxShadow: "1px 2px 3px 4px #c7c7c7",
-          backgroundColor: "white",
-          borderRadius: "5px",
-          margin: "50px 0px 0px 300px",
-          border: "1px solid white",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <div style={{ fontWeight: "bolder", marginTop:"10px",marginBottom:"10px" }}>Basic Details</div>
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "80%" }}>
+      
+    
+
+      {/* Cards Section - Two cards in a row */}
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
         {ProfileDetailsHeader.map((item) => {
           return (
             <div
+              key={item.key}
               style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                width: "100%",
-                padding: "10px",
-                borderBottom: "1px solid lightgray",
-                marginBottom: "20px",
+                flex: "1 1 calc(45% - 10px)", // Each card takes up 45% width minus the gap
+                maxWidth: "450px", // Set a maximum width for the cards
+                marginBottom: "10px", // Add some margin for spacing between rows
               }}
             >
-              <div style={{ fontWeight: "bolder"}}>{item.label}</div>
-              <div>{data[0]?.[item.key]}</div>
+              <Card label={item.label} value={data[item.key]} />
             </div>
           );
         })}
-        </div>
-      </div> */}
+      </div>
     </div>
   );
 }
