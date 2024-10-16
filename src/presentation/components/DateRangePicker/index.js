@@ -89,6 +89,7 @@ const DateRangePicker = ({
                     justifyContent: 'space-between',
                     alignItems: 'center',
                     height:"37px",
+                    backgroundColor:"white"
                 }}
             >
                 {/* Clickable Calendar Icon and Arrow */}

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import CustomActionIcon from "./CustomActionIcon";
 import { CustomInput } from "./customInput/CustomInput";
 import "./customInput/input.css";
+import ButtonComponent from "./button";
 
 export const CustomFilter = ({ data, search, Component, show, mobileFilter, onClickClear }) => {
   const [filterData, setFilterData] = useState([]);
@@ -134,10 +135,10 @@ export const CustomFilter = ({ data, search, Component, show, mobileFilter, onCl
         flexDirection: "column",
         width: "100%",
         padding: show ? 10 : 0,
-        backgroundColor: "#FFFFFF",
+        backgroundColor: "transparent",
         borderRadius: "15px",
         opacity: show ? 1 : 0,
-        height: show ? 150 : 0,
+        height: show ? 100 : 0,
         transition: "visibility 0.5s, opacity 0.5s linear , height 0.5s",
         justifyContent: "space-between",
       }}
@@ -149,10 +150,10 @@ export const CustomFilter = ({ data, search, Component, show, mobileFilter, onCl
           justifyContent: "flex-end", // Align icons to the right
           gap: 10,
           padding: 10,
-          marginBottom: 0,
         }}
       >
-        <CustomActionIcon
+        <ButtonComponent
+          label="Search"
           onClick={() => {
             console.log("Filter Data--->", filterData);
             filterData &&
@@ -164,76 +165,10 @@ export const CustomFilter = ({ data, search, Component, show, mobileFilter, onCl
             const isFilterApplied = filterData.every((item) => item.value === "");
             if (!isFilterApplied) search(filterData);
           }}
-          showToolTip={false}
-          style={{ marginRight: 10 }}
-        >
-          <div
-            style={{
-              width: "36px",
-              height: "36px",
-              borderRadius: "5px",
-              backgroundColor: "#3783FB",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-            title="Search"
-          >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 32 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M20.6666 18.6666H19.6133L19.24 18.3066C20.84 16.44 21.6666 13.8933 21.2133 11.1866C20.5866 7.47998 17.4933 4.51998 13.76 4.06665C8.11998 3.37331 3.37331 8.11998 4.06665 13.76C4.51998 17.4933 7.47998 20.5866 11.1866 21.2133C13.8933 21.6666 16.44 20.84 18.3066 19.24L18.6666 19.6133V20.6666L24.3333 26.3333C24.88 26.88 25.7733 26.88 26.32 26.3333C26.8666 25.7866 26.8666 24.8933 26.32 24.3466L20.6666 18.6666ZM12.6666 18.6666C9.34665 18.6666 6.66665 15.9866 6.66665 12.6666C6.66665 9.34665 9.34665 6.66665 12.6666 6.66665C15.9866 6.66665 18.6666 9.34665 18.6666 12.6666C18.6666 15.9866 15.9866 18.6666 12.6666 18.6666Z"
-                fill="white"
-              />
-            </svg>
-          </div>
-        </CustomActionIcon>
+         />
 
-        {/* Clear Icon */}
-        <CustomActionIcon
-          onClick={() => {
-            clearAllFields(); // Call the function to clear all fields
-          }}
-          showToolTip={false}
-        >
-          <div
-            style={{
-              width: "36px",
-              height: "36px",
-              borderRadius: "5px",
-              backgroundColor: "#3783FB", // Use a different color to differentiate the clear icon
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-            title="Clear"
-          >
-            {/* SVG for Clear Icon */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="white"
-              width="18"
-              height="18"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M19 11L7.5 22.5a2.121 2.121 0 01-3-3L14.5 8m4.5-4.5L18 6M2 22h12"
-              />
-            </svg>
-          </div>
-        </CustomActionIcon>
-
-        <CustomActionIcon
-          showToolTip={false}
+        <ButtonComponent
+          label="Clear"
           onClick={() => {
             let shouldSearch = false;
             filterData &&
@@ -246,33 +181,7 @@ export const CustomFilter = ({ data, search, Component, show, mobileFilter, onCl
             if (shouldSearch) search(filterData);
             onClickClear();
           }}
-        >
-          <div
-            style={{
-              width: "36px",
-              height: "36px",
-              borderRadius: "5px",
-              backgroundColor: "#3783FB",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-            title="Close"
-          >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 22 22"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M16.775 5.2342C16.4175 4.8767 15.84 4.8767 15.4825 5.2342L11 9.70753L6.51753 5.22503C6.16003 4.86753 5.58253 4.86753 5.22503 5.22503C4.86753 5.58253 4.86753 6.16003 5.22503 6.51753L9.70753 11L5.22503 15.4825C4.86753 15.84 4.86753 16.4175 5.22503 16.775C5.58253 17.1325 6.16003 17.1325 6.51753 16.775L11 12.2925L15.4825 16.775C15.84 17.1325 16.4175 17.1325 16.775 16.775C17.1325 16.4175 17.1325 15.84 16.775 15.4825L12.2925 11L16.775 6.51753C17.1234 6.1692 17.1234 5.58253 16.775 5.2342Z"
-                fill="white"
-              />
-            </svg>
-          </div>
-        </CustomActionIcon>
+        />
       </div>
 
       {/* Fields Section */}
@@ -282,9 +191,8 @@ export const CustomFilter = ({ data, search, Component, show, mobileFilter, onCl
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "flex-start",
-          marginTop: 0,
           marginLeft: 0,
-          // gap: 5,
+          gap: 5,
         }}
       >
         {data &&

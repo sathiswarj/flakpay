@@ -27,8 +27,6 @@ function Client() {
   const [showViewMoreDialog, setShowViewMoreDialog] = useState(false);
   const [selectedClientForViewMore, setSelectedClientForViewMore] = useState({});
 
-  const [openFilter, setOpenFilter] = useState(false);
-  const [dateRangeFilterValue, setDateRangeFilterValue] = useState("");
   const [companyNameFilterValue, setCompanyNameFilterValue] = useState("");
   const [emailFilterValue, setEmailFilterValue] = useState("");
   const [statusFilterValue, setStatusFilterValue] = useState("");
@@ -206,42 +204,6 @@ function Client() {
       });
   };
 
-  // const getAllFilters = (data) => {
-  //   const dateRange = data[0].value?.trim();
-  //   const companyName = data[1].value?.trim();
-  //   const email = data[2].value?.trim();
-  //   const status = data[3].value;
-  //   console.log("After status-->",status)
-  //   console.log("After email-->",email)
-
-  //   setDateRangeFilterValue(dateRange);
-  //   setCompanyNameFilterValue(companyName);
-  //   setEmailFilterValue(email);
-  //   setStatusFilterValue(status);
-
-  //   setStartDateFilterValue(data[0].value?.trim());
-  //   setEndDateFilterValue(data[1].value?.trim());
-  //   setEmailFilterValue(data[2].value?.trim());
-  //   setStatusFilterValue(data[3].value?.trim());
-
-  //   // setDateRangeFilterValue(dateRange);
-  //   // setCompanyNameFilterValue(companyName);
-  //   // setEmailFilterValue(email);
-  //   // setStatusFilterValue(status);
-
-  //   getAllClientsList(
-  //     tableCurrentPage,
-  //     tableCurrentPageSize,
-  //     serviceProviderIdFilterValue,
-  //     clientIdFilterValue,
-  //     data[0].value?.trim(),
-  //     data[1].value?.trim(),
-  //     data[2].value?.trim(),
-  //     data[3].value?.trim()
-  //   );
-  // };
-
-
   const getAllFilters = (data) => {
     const startDateRange = data[0].startDate;
     const endDateRange = data[0].endDate;
@@ -310,10 +272,6 @@ function Client() {
     >
       <Header
         heading={"Client"}
-        showFilterButton={true}
-        onClickFilterButton={() => {
-          setOpenFilter(!openFilter);
-        }}
         showAddButton={true}
         addButtonText={"Add Client"}
         onClickAddButton={() => {
@@ -340,39 +298,30 @@ function Client() {
       >
         <ClientDetailsPopupHome data={selectedClientForViewMore} refreshData={refreshClientList} />
       </DialogComponent>
-
-      {openFilter && (
-        <div
+      <div
           style={{
             width: "100%",
             borderRadius: "15px",
             display: "flex",
             alignItems: "center",
-            opacity: openFilter ? 1 : 0,
+            // opacity: openFilter ? 1 : 0,
             transition: "visibility 0.5s, opacity 0.5s linear",
-            marginTop: "20px",
-            backgroundColor: "white",
+            marginBottom:"20px"
           }}
         >
           <CustomFilter
-            show={openFilter}
-            data={Filterdata}
-            search={(data) => {
-              getAllFilters(data);
-            }}
-            onClickClear={() => {
-              clearAllFilterValue();
-              setOpenFilter(false);
-            }}
-            passActiveFilters={() => {}}
-            showClearIcon={true}
-            // passActiveFilters={(data) => {
-            //   setLiveFilters(data);
-            //   call();
-            // }}
-          />
-        </div>
-      )}
+          show={true}
+          data={Filterdata}
+          search={(data) => {
+            getAllFilters(data);
+          }}
+          onClickClear={() => {
+            clearAllFilterValue();
+          }}
+          passActiveFilters={() => {}}
+          showClearIcon={true} />
+          </div>
+    
 
       {loading ? (
         <Loader />
