@@ -20,6 +20,7 @@ import {
   addClientListAction,
   addServiceProviderListAction,
 } from "../../../data/local/redux/action/clientActions";
+import logo from "../../../Assets/png/aanamaak_mart_logo.webp";
 
 function Login() {
   const dispatch = useDispatch();
@@ -57,7 +58,7 @@ function Login() {
           secureStorage.setItem("token", data?.data?.token);
           secureStorage.setItem("refreshToken", data?.data?.refreshToken);
           secureStorage.setItem("email", email);
-          secureStorage.setItem("password",password);
+          secureStorage.setItem("password", password);
           secureStorage.setItem("secretKey", data?.data?.secretKey);
           if (data?.data?.role === "Admin") {
             getAllClientList();
@@ -95,7 +96,7 @@ function Login() {
       .catch((err) => {
         console.log(err);
       })
-      .finally(() => {});
+      .finally(() => { });
   };
   const getAllServiceProviderlist = () => {
     ApiRequestGet.getAllSp()
@@ -105,7 +106,7 @@ function Login() {
       .catch((err) => {
         console.log(err);
       })
-      .finally(() => {});
+      .finally(() => { });
   };
   // useEffect(() => {
   //   onClickLogin()
@@ -121,163 +122,190 @@ function Login() {
 
   return (
     <div
-      style={{
-        width,
-        display: "flex",
-        flexDirection: width > 650 ? "row" : "column",
-        flexDirection: "row",
-        height: height,
-      }}
+    style={{
+      display: 'flex',
+      flexDirection: 'column',
+      height: '100vh',
+      fontFamily: "'Poppins', sans-serif",
+      justifyContent: 'center', 
+      alignItems: 'center',
+    }}
     >
-      <div
+       <div
         style={{
-          width: width > 650 ? "50%" : "100%",
-          display: width > 650 ? "flex" : "none",
-          background: " linear-gradient(to right, #680e86, #d979f7)",
-        }}
-      ></div>
-      <div
-        style={{
-          width: width > 650 ? "50%" : "100%",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "column",
-          height,
+          textAlign: 'center',
+          marginBottom: '20px',
         }}
       >
-        <p
+        <img
+          src={logo}
+          alt="Company Logo"
+          style={{ width: '250px', height: 'auto' }} 
+        />
+      </div>
+
+   
+      <div
+        style={{
+           background: '#03A176',
+          padding: '40px',
+          borderRadius: '15px',
+          backdropFilter: 'blur(10px)',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
+          textAlign: 'center',
+          width:"350px"
+        }}
+      >
+        <h2
           style={{
-            fontWeight: "500",
-            fontSize: 40,
-            marginBottom: 40,
-            color: "#1A202C",
-            margin: 0,
+            marginBottom: '30px',
+            fontSize: '2rem',
+            color: 'white',
           }}
-          className="roboto"
         >
-          LOGIN
-        </p>
-        <div style={{ marginTop: "25px", lineHeight: "30px" }}>
-          <p style={{ margin: 0, color: "#202020", fontSize: "14px" }}>
-            Email <span style={{ color: "#FC3629" }}> * </span>
-          </p>
+          Welcome!
+        </h2>
+        <div
+          style={{
+            position: 'relative',
+            marginBottom: '30px',
+          }}
+        >
           <input
-            onChange={handleEmailChange}
+            type="email"
             value={email}
+            onChange={handleEmailChange}
+            required
             style={{
-              width: "400px",
-              height: "35px",
-              borderRadius: "7px",
-              border: "1px solid #ABABAB",
-              outlineStyle: "none",
-              paddingLeft: "10px",
+              width: '100%',
+              padding: '10px',
+              fontSize: '16px',
+              background: 'none',
+              border: 'none',
+              borderBottom: '2px solid white',
+              outline: 'none',
+              color: 'white',
             }}
-            type="text"
-            placeholder="Enter Email Address"
-          ></input>
+          />
+          <label
+            style={{
+              position: 'absolute',
+              left: '0',
+              bottom: '10px',
+              fontSize: email ? '14px' : '16px',
+              color:'white',
+              transform: email ? 'translateY(-30px)' : 'none',
+              transition: '0.3s',
+            }}
+          >
+            Email
+          </label>
         </div>
         <div
           style={{
-            marginTop: "20px",
-            lineHeight: "30px",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-end",
+            position: 'relative',
+            marginBottom: '15px',
           }}
         >
-          <div
+          <input
+            type={type}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
             style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-start",
+              width: '100%',
+              padding: '10px',
+              fontSize: '16px',
+              background: 'none',
+              border: 'none',
+              borderBottom: '2px solid white',
+              outline: 'none',
+              color: 'white',
+            }}
+          />
+          <label
+            style={{
+              position: 'absolute',
+              left: '0',
+              bottom: '10px',
+              fontSize: password ? '14px' : '16px',
+              color:'white',
+              transform: password ? 'translateY(-30px)' : 'none',
+              transition: '0.3s',
             }}
           >
-            <p style={{ margin: 0, color: "#202020", fontSize: "14px" }}>
-              Password <span style={{ color: "#FC3629" }}> * </span>
-            </p>
-            <div
+            Password
+          </label>
+          <div
+            style={{
+              position: 'absolute',
+              right: '2px',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              cursor: 'pointer',
+            }}
+          >
+            {visible ? (
+              <VisibilityIcon
+                onClick={() => {
+                  setType("text");
+                  setVisible(false);
+                  setVisibleOff(true);
+                }}
+                style={{ color: '#85497B' }}
+              />
+            ) : (
+              <VisibilityOffIcon
+                onClick={() => {
+                  setType("password");
+                  setVisible(true);
+                  setVisibleOff(false);
+                }}
+                style={{ color: '#85497B' }}
+              />
+            )}
+          </div>
+        </div>
+        <div
+          style={{
+            textAlign: 'right',
+            marginBottom: '30px',
+          }}
+        >
+          <Link to="/ForgotPassword" style={{ textDecoration: "none" }}>
+            <p
               style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                width: "400px",
-                height: "37px",
-                borderRadius: "7px",
-                border: "1px solid #ABABAB",
-                paddingLeft: "10px",
+                fontSize: "small",
+                fontWeight: "bold",
+                textAlign: "right",
+                cursor: "pointer",
+                textDecoration: "none",
+                color: 'white',
               }}
             >
-              <input
-                style={{
-                  width: "400px",
-                  height: "34px",
-                  borderRadius: "7px",
-                  border: "1px solid #ABABAB",
-                  outline: "none",
-                  border: "none",
-                }}
-                onChange={(e) => setPassword(e.target.value)}
-                type={type}
-                placeholder="Enter Password"
-              />
-
-              {visible && (
-                <VisibilityIcon
-                  onClick={() => {
-                    setType("text");
-                    setVisible(false);
-                    setVisibleOff(true);
-                  }}
-                />
-              )}
-              {visibleoff && (
-                <VisibilityOffIcon
-                  onClick={() => {
-                    setType("password");
-                    setVisible(true);
-                    setVisibleOff(false);
-                  }}
-                  className="visibilityicon"
-                />
-              )}
-              <div style={{ marginRight: 10 }} />
-            </div>
-          </div>
-          <div style={{ width: "auto", maxWidth: 120 }}>
-            <Link to="/ForgotPassword" style={{ textDecoration: "none" }}>
-              <p
-                style={{
-                  fontSize: "small",
-                  fontWeight: "bold",
-                  textAlign: "right",
-                  cursor: "pointer",
-                  textDecoration: "none",
-                  color: "blue",
-                }}
-              >
-                Forgot Password ?
-              </p>
-            </Link>
-          </div>
+              Forgot Password ?
+            </p>
+          </Link>
         </div>
         <button
           style={{
-            width: "130px",
-            padding: "10px",
-            borderRadius: "4px",
-            border: "none",
-            background: " linear-gradient(to right, #9d25c5, #d26cf1)",
-            color: "white",
-            cursor: "pointer",
-            marginLeft: "25px",
-            marginTop: "20px",
+            width: '50%',
+            padding: '10px',
+            fontSize: '16px',
+            fontWeight:"bold",
+            color: '#39B288',
+            backgroundColor: 'white',
+            border: 'none',
+            borderRadius: '30px',
+            cursor: 'pointer',
+            transition: 'background-color 0.3s',
           }}
           onClick={onClickLogin}
         >
-          Log In
+          Login
         </button>
       </div>
+    
     </div>
   );
 }

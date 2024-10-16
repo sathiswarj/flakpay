@@ -9,6 +9,7 @@ import { useNavigate } from "react-router";
 import { enqueueSnackbar } from "notistack";
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { ApiRequestPost } from "../../../data/network/services/ApiRequestPost";
+import logo from "../../../Assets/png/aanamaak_mart_logo.webp";
 
 function ResetPassword() {
   const { height, width } = ResizeListener();
@@ -67,41 +68,57 @@ function ResetPassword() {
 
   return (
     <div
-      style={{
-        width,
-        display: "flex",
-        flexDirection: width > 650 ? "row" : "column",
-        flexDirection: "row",
-        height: height,
-      }}
+    style={{
+      display: 'flex',
+      flexDirection: 'column',
+      height: '100vh',
+      fontFamily: "'Poppins', sans-serif",
+      justifyContent: 'center', 
+      alignItems: 'center',
+    }}
     >
       <div
         style={{
-          width: width > 650 ? "50%" : "100%",
-          display: width > 650 ? "flex" : "none",
-          background: "linear-gradient(to right, #ff7e5f, #feb47b)",
+          textAlign: 'center',
+          marginBottom: '20px',
         }}
-      ></div>
+      >
+        <img
+          src={logo}
+          alt="Company Logo"
+          style={{ width: '250px', height: 'auto' }} 
+        />
+      </div>
 
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
-          marginTop: "150px",
-          marginLeft: "170px",
-          gap: "10px",
+           background: '#03A176',
+          padding: '40px',
+          borderRadius: '15px',
+          backdropFilter: 'blur(10px)',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
+          textAlign: 'center',
+          width:"350px",
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
       >
-        <div
-          style={{ fontSize: "35px", fontWeight: "bold", marginLeft: "25px" }}
+          <h2
+          style={{
+            marginBottom: '30px',
+            fontSize: '2rem',
+            color: 'white',
+          }}
         >
-          RESET PASSWORD
-        </div>
-        <div style={{ marginTop: "50px", lineHeight: "3px" }}>
-          <p style={{ color: "" }}>New Password</p>
+          Reset Password
+        </h2>
+        <div style={{ textAlign:"left", lineHeight: "3px",marginBottom:"10px" }}>
+          <p style={{ color: "white",fontWeight:"bold" }}>New Password</p>
           <div
             style={{
-              width: "400px",
+              width: "350px",
               height: "35px",
               borderRadius: "5px",
               border: "1px solid #ABABAB",
@@ -109,6 +126,7 @@ function ResetPassword() {
               display: "flex",
               alignItems: "center",
               paddingRight: 15,
+              backgroundColor:"white"
             }}
           >
             <input
@@ -118,7 +136,6 @@ function ResetPassword() {
                 border: "none",
                 outline: "none",
                 paddingLeft: 15,
-                backgroundColor: "transparent",
               }}
               type={showPassword ? "text" : "password"}
               placeholder="Enter Password"
@@ -131,6 +148,7 @@ function ResetPassword() {
                   setShowPassword(false);
                 }}
                 className="visibilityicon"
+                style={{ color: '#85497B' }}
               />
             ) : (
               <VisibilityOffIcon
@@ -138,15 +156,16 @@ function ResetPassword() {
                   setShowPassword(true);
                 }}
                 className="visibilityicon"
+                style={{ color: '#85497B' }}
               />
             )}
           </div>
         </div>
-        <div style={{ lineHeight: "3px" }}>
-          <p>Confirm Password</p>
+       <div style={{ textAlign:"left", lineHeight: "3px",marginBottom:"10px" }}>
+        <p style={{ color: "white",fontWeight:"bold" }}>Confirm Password</p>
           <div
             style={{
-              width: "400px",
+              width: "350px",
               height: "35px",
               borderRadius: "5px",
               border: "1px solid #ABABAB",
@@ -154,6 +173,7 @@ function ResetPassword() {
               display: "flex",
               alignItems: "center",
               paddingRight: 15,
+              backgroundColor:"white"
             }}
           >
             <input
@@ -163,7 +183,6 @@ function ResetPassword() {
                 border: "none",
                 outline: "none",
                 paddingLeft: 15,
-                backgroundColor: "transparent",
               }}
               onChange={(e) => {setConfirmPassword(e.target.value)}}
               type={showConfirmPassword ? "text" : "password"}
@@ -176,6 +195,7 @@ function ResetPassword() {
                   setShowConfirmPassword(false);
                 }}
                 className="visibilityicon"
+                style={{ color: '#85497B' }}
               />
             ) : (
               <VisibilityOffIcon
@@ -183,6 +203,7 @@ function ResetPassword() {
                   setShowConfirmPassword(true);
                 }}
                 className="visibilityicon"
+                style={{ color: '#85497B' }}
               />
             )}
           </div>
@@ -193,11 +214,12 @@ function ResetPassword() {
             padding: "10px",
             borderRadius: "4px",
             border: "none",
-            background: "linear-gradient(to right, #ff7e5f, #feb47b)",
-            color: "white",
+            background: "white",
+            color: "#03A176",
             marginTop: "45px",
-            marginLeft: "140px",
             cursor: "pointer",
+            fontWeight:"bold",
+            fontSize:"15px"
           }}
           onClick={onClickResetPassword}
         >

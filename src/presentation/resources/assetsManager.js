@@ -1,5 +1,5 @@
 import AccountIcon from "../../Assets/svg/account.svg";
-import Logo1 from "../../Assets/png/logo-final.png";
+import Logo1 from "../../Assets/png/aanamaak_mart_logo.webp";
 import AddIcon from "../../Assets/svg/add.svg";
 import BlackClearIcon from "../../Assets/svg/blackClear.svg";
 import BusinessDashboard from "../../Assets/svg/BussinessCenter.svg";
