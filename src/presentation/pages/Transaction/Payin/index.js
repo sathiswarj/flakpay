@@ -35,7 +35,6 @@ function PayInTransaction() {
 
   const [clientList, setClientList] = useState([]);
 
-  const [openFilter, setOpenFilter] = useState(true);
   const [startDateFilterValue, setStartDateFilterValue] = useState("");
   const [endDateFilterValue, setEndDateFilterValue] = useState("");
   const [orderIdFilterValue, setOrderIdFilterValue] = useState("");
@@ -289,8 +288,6 @@ function PayInTransaction() {
     >
       <Header
         heading={`Payin Transaction`}
-        showFilterButton={true}
-        
         showDownloadButton={tableData.length > 0}
         onClickDownloadButton={() => {
           oncClickDownloaded();

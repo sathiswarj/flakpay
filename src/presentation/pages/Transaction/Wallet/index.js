@@ -43,7 +43,6 @@ function WalletTransaction() {
   const [clientIdFilterValue, setClientIdFilterValue] = useState("");
   const [iserveUClientList, setIserveUClientList] = useState([]);
 
-  const [openFilter, setOpenFilter] = useState(false);
   const [dateRangeFilterValue, setDateRangeFilterValue] = useState("");
   const [orderIdFilterValue, setOrderIdFilterValue] = useState("");
   const [statusFilterValue, setStatusFilterValue] = useState("");
@@ -295,10 +294,6 @@ function WalletTransaction() {
     >
       <Header
         heading={`Wallet Transaction`}
-        showFilterButton={true}
-        onClickFilterButton={() => {
-          setOpenFilter(!openFilter);
-        }}
         showDownloadButton={tableData.length > 0}
         onClickDownloadButton={() => {
           oncClickDownloaded();
@@ -350,28 +345,26 @@ function WalletTransaction() {
         />
       </DialogComponent>
 
-      {openFilter && (
+       
         <div
           style={{
             width: "100%",
             borderRadius: "15px",
             display: "flex",
             alignItems: "center",
-            opacity: openFilter ? 1 : 0,
             transition: "visibility 0.5s, opacity 0.5s linear",
-            marginTop: "20px",
+            marginBottom: "20px",
             backgroundColor: "white",
           }}
         >
           <CustomFilter
-            show={openFilter}
+            show={true}
             data={Filterdata}
             search={(data) => {
               getAllFilters(data);
             }}
             onClickClear={() => {
               clearAllFilterValue();
-              setOpenFilter(false);
             }}
             passActiveFilters={() => { }}
             showClearIcon={true}
@@ -381,7 +374,7 @@ function WalletTransaction() {
           // }}
           />
         </div>
-      )}
+  
       <TableComponent
         tableHeaders={
           role === "Client" ? WalletTransactionsHeaderClient : WalletTransactionsHeaderAdmin

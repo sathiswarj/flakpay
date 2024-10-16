@@ -213,10 +213,7 @@ function SettlementTransaction() {
         onClickAddButton={() => {
           navigate("/ManualSettlement");
         }}
-        showFilterButton={true}
-        onClickFilterButton={() => {
-          setOpenFilter(!openFilter);
-        }}
+        // showFilterButton={true}
         showDownloadButton={false}
         onClickDownloadButton={onClickDownload}
       ></Header>
@@ -237,28 +234,26 @@ function SettlementTransaction() {
         />
       </DialogComponent>
 
-      {openFilter && (
+   
         <div
           style={{
             width: "100%",
             borderRadius: "15px",
             display: "flex",
             alignItems: "center",
-            opacity: openFilter ? 1 : 0,
             transition: "visibility 0.5s, opacity 0.5s linear",
-            marginTop: "20px",
+            marginBottom: "20px",
             backgroundColor: "white",
           }}
         >
           <CustomFilter
-            show={openFilter}
+            show={true}
             data={Filterdata}
             search={(data) => {
               getAllFilters(data);
             }}
             onClickClear={() => {
               clearAllFilterValue();
-              setOpenFilter(false);
             }}
             passActiveFilters={() => {}}
             showClearIcon={true}
@@ -268,7 +263,7 @@ function SettlementTransaction() {
             // }}
           />
         </div>
-      )}
+       
 
       <TableComponent
         tableHeaders={
