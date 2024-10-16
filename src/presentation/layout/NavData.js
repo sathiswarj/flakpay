@@ -1,35 +1,36 @@
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import TransactionIcon from "@mui/icons-material/MoneyTwoTone";
-import CodeIcon from '@mui/icons-material/Code';
-import LockResetIcon from '@mui/icons-material/LockReset';
-import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
-import Diversity3Icon from '@mui/icons-material/Diversity3';
-import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
-import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices';
-import UserIcon from '@mui/icons-material/SupervisedUserCircle';
+import SpaceDashboardOutlinedIcon from "@mui/icons-material/SpaceDashboardOutlined";
+import PaidOutlinedIcon from "@mui/icons-material/PaidOutlined";
+import AttachMoneyOutlinedIcon from "@mui/icons-material/AttachMoneyOutlined";
+import IntegrationInstructionsOutlinedIcon from "@mui/icons-material/IntegrationInstructionsOutlined";
+import PasswordOutlinedIcon from "@mui/icons-material/PasswordOutlined";
+import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
+import Diversity1OutlinedIcon from "@mui/icons-material/Diversity1Outlined";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import SettingsSuggestOutlinedIcon from "@mui/icons-material/SettingsSuggestOutlined";
+import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 
 export const adminSideBarData = [
   {
     id: 0,
-    icon: <DashboardIcon />,
+    icon: <SpaceDashboardOutlinedIcon />,
     text: "Dashboard",
     link: "/",
   },
   {
     id: 1,
-    icon: <MiscellaneousServicesIcon />,
+    icon: <SettingsSuggestOutlinedIcon />,
     text: "Service Providers",
     link: "/ServiceProviders",
   },
   {
     id: 2,
-    icon: <UserIcon />,
+    icon: <PersonOutlineOutlinedIcon />,
     text: "User",
     link: "/user",
   },
   {
     id: 3,
-    icon: <Diversity3Icon />,
+    icon: <Diversity1OutlinedIcon />,
     text: "Client",
     link: "/client",
   },
@@ -47,54 +48,54 @@ export const adminSideBarData = [
   // },
   {
     id: 4,
-    icon: <TransactionIcon />,
+    icon: <PaidOutlinedIcon />,
     text: "Payin",
     // link: "/PayinTransaction",
     children: [
       {
         id: 41,
-        icon: <TransactionIcon />,
+        icon: <AttachMoneyOutlinedIcon />,
         text: "Payin Txns",
         link: "/PayinTransaction",
       },
       {
         id: 42,
-        icon: <TransactionIcon />,
+        icon: <AttachMoneyOutlinedIcon />,
         text: "Payin Settlement",
         link: "/SettlementTransaction",
       },
     ],
   },
-   
+
   {
     id: 5,
-    icon: <TransactionIcon />,
+    icon: <PaidOutlinedIcon />,
     text: "Payout",
     // link: "/PayinTransaction",
     children: [
       {
         id: 51,
-        icon: <TransactionIcon />,
+        icon: <AttachMoneyOutlinedIcon />,
         text: "Prefund Txns",
         link: "/PrefundTransactions",
       },
       {
         id: 52,
-        icon: <TransactionIcon />,
+        icon: <AttachMoneyOutlinedIcon />,
         text: "Payout Txns",
         link: "/Payouttransactions",
       },
       {
         id: 53,
-        icon: <TransactionIcon />,
+        icon: <AttachMoneyOutlinedIcon />,
         text: "Fund Transfer",
-         link: "/Fund Transfer",
+        link: "/Fund Transfer",
       },
       {
         id: 54,
-        icon: <TransactionIcon />,
+        icon: <AttachMoneyOutlinedIcon />,
         text: "Wallet Txns",
-         link: "/WalletTransactions",
+        link: "/WalletTransactions",
       },
     ],
   },
@@ -118,13 +119,13 @@ export const adminSideBarData = [
   // },
   {
     id: 8,
-    icon: <CodeIcon />,
+    icon: <IntegrationInstructionsOutlinedIcon />,
     text: "Developer Page",
     link: "/Developers",
   },
   {
     id: 9,
-    icon: <LockResetIcon />,
+    icon: <PasswordOutlinedIcon />,
     text: "Change Password",
     link: "/ChangePassword",
   },
@@ -133,25 +134,25 @@ export const adminSideBarData = [
 export const clientSideBarData = [
   {
     id: 0,
-    icon: <DashboardIcon />,
+    icon: <SpaceDashboardOutlinedIcon />,
     text: "Dashboard",
     link: "/",
   },
   {
     id: 1,
-    icon: <TransactionIcon />,
+    icon: <PaidOutlinedIcon />,
     text: "Payin",
     // link: "/PayinTransaction",
     children: [
       {
         id: 41,
-        icon: <TransactionIcon />,
+        icon: <AttachMoneyOutlinedIcon />,
         text: "Payin Txns",
         link: "/PayinTransaction",
       },
       {
         id: 42,
-        icon: <TransactionIcon />,
+        icon: <AttachMoneyOutlinedIcon />,
         text: "Payin Settlement",
         link: "/SettlementTransaction",
       },
@@ -160,27 +161,27 @@ export const clientSideBarData = [
 
   {
     id: 2,
-    icon: <TransactionIcon />,
+    icon: <PaidOutlinedIcon />,
     text: "Payout",
     // link: "/PayinTransaction",
     children: [
       {
         id: 51,
-        icon: <TransactionIcon />,
+        icon: <AttachMoneyOutlinedIcon />,
         text: "Prefund Transactions",
         link: "/PrefundTransactions",
       },
       {
         id: 52,
-        icon: <TransactionIcon />,
+        icon: <AttachMoneyOutlinedIcon />,
         text: "Payout Transactions",
         link: "/Payouttransactions",
-      }
+      },
     ],
   },
   {
     id: 3,
-    icon: <CodeIcon />,
+    icon: <IntegrationInstructionsOutlinedIcon />,
     text: "Developer Page",
     link: "/Developers",
   },
@@ -192,23 +193,22 @@ export const clientSideBarData = [
   },
   {
     id: 5,
-    icon: <LockResetIcon />,
+    icon: <PasswordOutlinedIcon />,
     text: "Change Password",
     link: "/ChangePassword",
   },
 ];
 
-
 export const onboardingSideBarData = [
   {
     id: 0,
-    icon: <Diversity3Icon />,
+    icon: <Diversity1OutlinedIcon />,
     text: "Client",
     link: "/Client",
   },
   {
     id: 1,
-    icon: <MiscellaneousServicesIcon />,
+    icon: <SettingsSuggestOutlinedIcon />,
     text: "Service Providers",
     link: "/ServiceProviders",
   },
@@ -220,35 +220,34 @@ export const onboardingSideBarData = [
   },
   {
     id: 3,
-    icon: <LockResetIcon />,
+    icon: <PasswordOutlinedIcon />,
     text: "Change Password",
     link: "/ChangePassword",
   },
 ];
 
-
 export const settlementSideBarData = [
   {
     id: 0,
-    icon: <DashboardIcon />,
+    icon: <SpaceDashboardOutlinedIcon />,
     text: "Dashboard",
     link: "/",
   },
   {
     id: 1,
-    icon: <TransactionIcon />,
+    icon: <PaidOutlinedIcon />,
     text: "Payin",
     // link: "/PayinTransaction",
     children: [
       {
         id: 41,
-        icon: <TransactionIcon />,
+        icon: <AttachMoneyOutlinedIcon />,
         text: "Payin Txns",
         link: "/PayinTransaction",
       },
       {
         id: 42,
-        icon: <TransactionIcon />,
+        icon: <AttachMoneyOutlinedIcon />,
         text: "Payin Settlement",
         link: "/SettlementTransaction",
       },
@@ -256,27 +255,27 @@ export const settlementSideBarData = [
   },
   {
     id: 2,
-    icon: <TransactionIcon />,
+    icon: <PaidOutlinedIcon />,
     text: "Payout",
     // link: "/PayinTransaction",
     children: [
       {
         id: 51,
-        icon: <TransactionIcon />,
+        icon: <AttachMoneyOutlinedIcon />,
         text: "Prefund Transactions",
         link: "/PrefundTransactions",
       },
       {
         id: 52,
-        icon: <TransactionIcon />,
+        icon: <AttachMoneyOutlinedIcon />,
         text: "Payout Transactions",
         link: "/Payouttransactions",
-      }
+      },
     ],
   },
   {
     id: 3,
-    icon: <TransactionIcon />,
+    icon: <PaidOutlinedIcon />,
     text: "Payout Txns",
     link: "/PayoutTransaction",
   },
@@ -294,7 +293,7 @@ export const settlementSideBarData = [
   },
   {
     id: 6,
-    icon: <LockResetIcon />,
+    icon: <PasswordOutlinedIcon />,
     text: "Change Password",
     link: "/ChangePassword",
   },

@@ -20,25 +20,23 @@ const TopNavBar = () => {
   const [walletBalance, setWalletBalance] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [clickStateEnabled, setClickStateEnabled] = useState(false);
 
-
-  const fetchWalletBalance = ()=>{
+  const fetchWalletBalance = () => {
     setIsLoading(true);
     ApiRequestGet.getClientPayoutBalance()
-    .then((res)=>{
-      if(res.data.balance){
-        setWalletBalance(res.data.balance);
-      } 
-    })
-    .catch((err) => {
-      enqueueSnackbar("Error fetching wallet balance", { variant: "error" });
-    })
-    .finally(() => {
-      setIsLoading(false); 
-    });
-
-  }
-
+      .then((res) => {
+        if (res.data.balance) {
+          setWalletBalance(res.data.balance);
+        }
+      })
+      .catch((err) => {
+        enqueueSnackbar("Error fetching wallet balance", { variant: "error" });
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
 
   const logout = () => {
     ApiRequestPost.logout()
@@ -64,7 +62,7 @@ const TopNavBar = () => {
     let email = secureStorage.getItem("email");
     const roleFromStorage = secureStorage.getItem("role");
     if (roleFromStorage) {
-      setRole(roleFromStorage); 
+      setRole(roleFromStorage);
     }
 
     let extract = email.charAt(0).toUpperCase();
@@ -87,48 +85,56 @@ const TopNavBar = () => {
     >
       <img style={{ width: 150, marginLeft: 20, margin: 10 }} src={LogoFinal} />
       <div style={{ marginRight: 30, display: "flex", alignItems: "center" }}>
-      {role === "Client" && (
-         <div style={{ display: "flex", alignItems: "center",marginRight:30 }}>
+        {role === "Client" && (
           <div
-            style={{
-              marginRight: 5, 
-              fontSize: "16px",
-              color: "green", 
-              fontWeight: "bold",
-            }}
+            style={{ display: "flex", alignItems: "center", marginRight: 30 }}
           >
-           Payout Balance: ₹{walletBalance !== null ? walletBalance : "Loading..."}
-          </div>
-         <RefreshIcon
+            <div
+              style={{
+                marginRight: 5,
+                fontSize: "16px",
+                color: "green",
+                fontWeight: "bold",
+              }}
+            >
+              Payout Balance: ₹
+              {walletBalance !== null ? walletBalance : "Loading..."}
+            </div>
+            <RefreshIcon
               style={{
                 cursor: "pointer",
-                color: "blue", 
+                color: "blue",
               }}
-              onClick={fetchWalletBalance} 
+              onClick={fetchWalletBalance}
             />
-               </div>
+          </div>
         )}
-      <div
-        style={{
-          marginRight: 30,
-          borderRadius: 50,
-          height: 20,
-          width: 20,
-          backgroundColor: "#732375",
-          color: "white",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          cursor: "pointer",
-          border: "1px solid orange",
-          padding: 10,
-        }}
-        onClick={() => setShowPopup(!showPopup)}
-      >
-        {email}
+        <div
+          onMouseDown={() => setClickStateEnabled(true)}
+          onMouseUp={() => setClickStateEnabled(false)}
+          style={{
+            marginRight: 30,
+            borderRadius: 50,
+            height: 20,
+            width: 20,
+            backgroundColor: "#64C466",
+            color: "black",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            cursor: "pointer",
+            border: "1px solid green",
+            padding: 10,
+            boxShadow: clickStateEnabled
+              ? "0 0 10px rgba(33, 172, 131, 0.8)" // Glowing effect on click
+              : "none",
+          }}
+          onClick={() => setShowPopup(!showPopup)}
+        >
+          {email}
+        </div>
       </div>
-      </div>
-      {showPopup && (
+      {/* {showPopup && (
         <div
           style={{
             position: "absolute",
@@ -157,7 +163,7 @@ const TopNavBar = () => {
             Logout
           </button>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

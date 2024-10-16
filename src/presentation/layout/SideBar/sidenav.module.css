@@ -14,7 +14,15 @@
     color: #000000;
     display: flex;
     align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.navLink:hover {
+    transform: scale(1.1); /* Slight scale on hover */
+    box-shadow: 0 0 10px rgba(33, 172, 131, 0.8);
+  }
+
+ 
   
 
 
