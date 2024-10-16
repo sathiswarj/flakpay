@@ -14,8 +14,8 @@ const TableViewMoreButton = ({ rowItem, onClickViewMoreButton }) => {
         justifyContent: "center",
         alignItems: "center",
         cursor: "pointer",
-        backgroundColor: hoverStateEnabled ? "#AEBDFA" : "#ffffff",
-        color: hoverStateEnabled ? "#37447A" : "#37447A",
+        backgroundColor: hoverStateEnabled ? "#135E1A" : "#ffffff",
+        color: hoverStateEnabled ? "#FFFFFF" : "#37447A",
       }}
       onMouseEnter={() => {
         setHoverStateEnabled(true);

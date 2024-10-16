@@ -5,7 +5,7 @@ import Slide from "@mui/material/Slide";
 import ResizeListener from "../../../utility/ResizeListener";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
+  return <Slide direction="right" ref={ref} {...props} />;
 });
 
 const DialogComponent = ({ showPopup, onClickCloseDialog, maxWidth, heading, children }) => {

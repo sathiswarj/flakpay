@@ -11,6 +11,10 @@ const useStyles = makeStyles((theme) => ({
     "& > *": {
       // marginTop: theme.spacing(2),
     },
+    '& .Mui-selected': {
+      backgroundColor: 'green',  
+      color: 'white', 
+    },
   },
 }));
 
