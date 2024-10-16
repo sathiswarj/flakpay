@@ -35,7 +35,7 @@ function PayInTransaction() {
 
   const [clientList, setClientList] = useState([]);
 
-  const [openFilter, setOpenFilter] = useState(false);
+  const [openFilter, setOpenFilter] = useState(true);
   const [startDateFilterValue, setStartDateFilterValue] = useState("");
   const [endDateFilterValue, setEndDateFilterValue] = useState("");
   const [orderIdFilterValue, setOrderIdFilterValue] = useState("");
@@ -290,9 +290,7 @@ function PayInTransaction() {
       <Header
         heading={`Payin Transaction`}
         showFilterButton={true}
-        onClickFilterButton={() => {
-          setOpenFilter(!openFilter);
-        }}
+        
         showDownloadButton={tableData.length > 0}
         onClickDownloadButton={() => {
           oncClickDownloaded();
@@ -319,28 +317,28 @@ function PayInTransaction() {
         />
       </DialogComponent>
 
-      {openFilter && (
+      
         <div
           style={{
             width: "100%",
             borderRadius: "15px",
             display: "flex",
             alignItems: "center",
-            opacity: openFilter ? 1 : 0,
+            // opacity: openFilter ? 1 : 0,
             transition: "visibility 0.5s, opacity 0.5s linear",
-            marginTop: "20px",
+            marginBottom: "20px",
             backgroundColor: "white",
           }}
         >
           <CustomFilter
-            show={openFilter}
+            show={true}
             data={Filterdata}
             search={(data) => {
               getAllFilters(data);
             }}
             onClickClear={() => {
               clearAllFilterValue();
-              setOpenFilter(false);
+              
             }}
             passActiveFilters={() => {}}
             showClearIcon={true}
@@ -350,7 +348,7 @@ function PayInTransaction() {
             // }}
           />
         </div>
-      )}
+     
       <TableComponent
         tableHeaders={
           role === "Client" ? PayinTransactionsHeaderClient : PayinTransactionsHeaderAdmin
