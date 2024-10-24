@@ -27,6 +27,8 @@
   padding-top: 5px;
   cursor: pointer;
   transition: all 0.5s ease;
+  font-family: "Roboto, Helvetica, Arial, sans-serif";
+  font-size: 16px;
 }
 /* .container1:before {
   content:" ";
@@ -40,7 +42,7 @@
 } */
 .container1:hover {
   color: black;
-  background-color: #fff0dd;
+  /* background-color: #fff0dd; */
   width: 120;
 }
 
@@ -76,7 +78,7 @@
 }
 .container2:hover {
   color: black;
-  background-color: #dfe6ff;
+  /* background-color: #dfe6ff; */
   width: 120;
 }
 
@@ -112,7 +114,7 @@
 }
 .container3:hover {
   color: black;
-  background-color: #ffe0e0;
+  /* background-color: #ffe0e0; */
   width: 120;
 }
 
@@ -141,6 +143,79 @@
   align-items: center;
   padding-top: 10px;
 }
+ 
+ 
+.MuiGrid-item:nth-child(1),
+.MuiGrid-item:nth-child(4) {
+  background-color: rgb(247, 205, 205);
+  width: 400px;
+  color: #000000;  
+}
+
+ 
+.MuiGrid-item:nth-child(2),
+.MuiGrid-item:nth-child(5) {
+  background-color: rgb(185, 177, 230);
+  width: 300px;
+  height: 300px;  
+  color: #000000;  
+}
+
+ 
+.MuiGrid-item:nth-child(3),
+.MuiGrid-item:nth-child(6) {
+  background-color: rgb(143, 135, 189);
+  height: 300px;   
+  width: 300px;
+  color: #000000;  
+}
+
+ .success-rate-card {
+  background-color: rgb(247, 205, 205);
+  width: 400px;
+  height: 300px;  
+  color: #000000;  
+}
+
+.value-display {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.value-display-enter {
+  opacity: 1;
+}
+
+
+.grid-section{
+  font-weight:400;
+  font-family:"Roboto, Helvetica, Arial, sans-serif";
+  font-size: 16px;
+}
+
+
+.value {
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  font-size: 24px;
+}
+
+/* Animation effect for when the value updates */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.value.animate {
+  animation: fadeIn 0.5s ease-in-out; /* Adjust the duration as needed */
+}
+
+
 @media screen and (min-width: 1700px) {
   .payin {
     display: flex;

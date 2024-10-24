@@ -10,6 +10,7 @@ import ButtonComponent from "../../components/button";
 import { CustomInput } from "../../components/customInput/CustomInput";
 import CustomSelectComponenet from "../../components/CustomDropdown";
 import DateRangePicker from "../../components/DateRangePicker";
+import EqualizerIcon from '@mui/icons-material/Equalizer';
 
 function Dashboard() {
   const [dashboard, setDashboard] = useState("PAYIN");
@@ -57,12 +58,26 @@ function Dashboard() {
     });
   };
 
-  const getMetaDataForPayin = async (clientId = "",startDate,endDate) => {
+
+  const getOneMonthRange = () => {
+    const now = new Date();
+    const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1, now.getHours(), now.getMinutes(), now.getSeconds());
+    const endDate = now;
+    setStartDate(startOfMonth);
+    setEndDate(endDate);
+
+    console.log("Start of Month :", formatDate(startOfMonth))
+    console.log("End of Month :", formatDate(endDate))
+    return { startOfMonth, endDate };
+  };
+
+
+  const getMetaDataForPayin = async (clientId = "", startDate, endDate) => {
     console.log("check --> ", clientId);
     const formattedStartDate = formatDate(startDate);
     const formattedEndDate = formatDate(endDate);
     setLoading(true);
-    ApiRequestGet.getPayinMeta(clientId,formattedStartDate,formattedEndDate)
+    ApiRequestGet.getPayinMeta(clientId, formattedStartDate, formattedEndDate)
       .then((res) => {
         setPayinInitiatedVolume(res.data.initiatedVolume);
         setPayinSuccessVolume(res.data.successVolume);
@@ -129,16 +144,21 @@ function Dashboard() {
       });
   };
 
-  const calculateSuccessRate = (successCount, initiatedCount) => {
-    if (!successCount || !initiatedCount || initiatedCount === 0) {
-      return "";  
-    }
-    return ((initiatedCount / successCount) * 100).toFixed(2) + "%"; 
+  const calculateSuccessRate = (initiatedCount, successCount) => {
+    if (initiatedCount === 0) return 0;
+    return (successCount / initiatedCount) * 100
   };
+
+
 
   useEffect(() => {
     getAllClientList();
     getAllPayoutSPList();
+    getOneMonthRange();
+
+    // const { oneMonthAgo, now } = getOneMonthRange();
+    // getMetaDataForPayin("", oneMonthAgo, now);  
+
     const roleFromSS = secureStorage.getItem("role");
     setRole(roleFromSS);
   }, []);
@@ -158,24 +178,6 @@ function Dashboard() {
             <MenuItem value={"PAYOUT"}>PAYOUT</MenuItem>
           </Select>
         </FormControl>
-        {/* <DateRangePicker /> */}
-        {/* 
-        {dashboard === "PAYOUT" && role === "Admin" && (
-          <div style={{ marginLeft: 15, width: "250px" }}>
-            <FormControl fullWidth style={{ maxWidth: "250px" }}>
-              <InputLabel>Payout Service Provider</InputLabel>
-              <Select
-                value={selectedPayoutSP}
-                onChange={(e) => setSelectedPayoutSP(e.target.value)}
-                label="Payout Service Provider"
-              >
-                {payoutSPList.map((item) => {
-                  return <MenuItem value={item.value}>{item.label}</MenuItem>;
-                })}
-              </Select>
-            </FormControl>
-          </div>
-        )} */}
 
         {role === "Admin" && (
           <div style={{ marginLeft: 15, width: "250px" }}>
@@ -185,68 +187,48 @@ function Dashboard() {
                 value={selectedClientId}
                 onChange={(e) => {
                   setSelectedClientId(e.target.value);
-                  if (dashboard === "PAYIN") {
-                    getMetaDataForPayin(e.target.value.split(":::")[0]);
-                  } else if (dashboard === "PAYOUT") {
-                    getMetaDataForPayout(e.target.value.split(":::")[0]);
-                  }
+                  getMetaDataForPayin(e.target.value.split(":::")[0], startDate, endDate);
                 }}
                 label="Client"
               >
                 {clientList.map((item) => {
-                  return <MenuItem value={item.value}>{item.value.split(":::")[1]}</MenuItem>;
+                  return (
+                    <MenuItem key={item.value} value={item.value}>
+                      {item.value.split(":::")[1]}
+                    </MenuItem>
+                  );
                 })}
               </Select>
             </FormControl>
           </div>
         )}
 
-        {/* <CustomInput
-          type="startDateTimePicker"
-          value={startDate}
-          onChange={(value) => setStartDate(value)}
-          placeholder="Start Date"
-        />  
+        <div style={{ marginLeft: 15 }}>
+          <DateRangePicker
+            startDate={startDate}
+            endDate={endDate}
+            onStartDateChange={(date) => setStartDate(date)}
+            onEndDateChange={(date) => setEndDate(date)}
+            selectPeriod={selectPeriod}                      // Handle selected period (Last 30 min, etc.)
+            onPeriodChange={(rangeType) => setSelectPeriod(rangeType)} // Handle when user selects a quick range
+          />
+        </div>
 
-        <CustomInput
-          type="endDateTimePicker"
-          value={endDate}
-          onChange={(value) => setEndDate(value)}
-          placeholder="End Date"
-        /> 
-
-        
-        <CustomSelectComponenet 
-        value={selectPeriod}
-        onChange={(event) => setSelectPeriod(event.target.value)}
-        data={selectPeriodDropdown}
-        label="Service Type"
-        style={{ width: 250,height:40,marginTop:0 }}
-        /> */}
- <div style={{ marginLeft: 15 }}>
-      <DateRangePicker
-        startDate={startDate}
-        endDate={endDate}
-        onStartDateChange={(date) => setStartDate(date)}  
-        onEndDateChange={(date) => setEndDate(date)}      
-        selectPeriod={selectPeriod}                      // Handle selected period (Last 30 min, etc.)
-        onPeriodChange={(rangeType) => setSelectPeriod(rangeType)} // Handle when user selects a quick range
-      />
-</div>
         <ButtonComponent
           loader={loading}
           label={"Load Data"}
           onClick={() =>
             dashboard === "PAYIN"
-              ? getMetaDataForPayin(selectedClientId.split(":::")[0],startDate,endDate)
+              ? getMetaDataForPayin(selectedClientId.split(":::")[0], startDate, endDate)
               : getMetaDataForPayout(
-                  selectedClientId.split(":::")[0],
-                  startDate,
-                  endDate,
-                  // selectedPayoutSP.split(":::")[0]
-                )
+                selectedClientId.split(":::")[0],
+                startDate,
+                endDate,
+                // selectedPayoutSP.split(":::")[0]
+              )
           }
         />
+
         <ButtonComponent
           loader={loading}
           label={"Reset"}
@@ -275,54 +257,59 @@ function Dashboard() {
       {dashboard === "PAYIN" || dashboard === "PAYOUT" ? (
         <>
           <div style={{ display: "flex", justifyContent: "center", marginTop: 30 }}>
-          <div style={{ display:"grid", gridTemplateColumns:"repeat(3, 1fr)", gap:"20px",maxWidth:"1400px"}}>
-            <DashboardCards
-              label={"Total Initiated Volume"}
-              value={"₹ " + (dashboard === "PAYIN" ? payinInitiatedVolume : payoutInitiatedVolume)}
-              valueColor={"grey"}
-              backgroundColor={"lightgrey"}
-            />
-            <DashboardCards
-              label={"Total Success Volume"}
-              value={"₹ " + (dashboard === "PAYIN" ? payinSuccessVolume : payoutSuccessVolume)}
-              valueColor={"green"}
-              backgroundColor={"lightgreen"}
-            />
-            <DashboardCards
-              label={"Total Failed Volume"}
-              value={"₹ " + (dashboard === "PAYIN" ? payinFailedVolume : payoutFailedVolume)}
-              valueColor={"red"}
-              backgroundColor={"pink"}
-            />
-          
-           <DashboardCards
-              label={"Total Initiated Count"}
-              value={dashboard === "PAYIN" ? payinInitiatedCount : payoutInitiatedCount}
-              valueColor={"grey"}
-              backgroundColor={"lightgrey"}
-            />
-            <DashboardCards
-              label={"Total Success Count"}
-              value={dashboard === "PAYIN" ? payinSuccessCount : payoutSuccessCount}
-              valueColor={"green"}
-              backgroundColor={"lightgreen"}
-            />
-            <DashboardCards
-              label={"Total Failed Count"}
-              value={dashboard === "PAYIN" ? payinFailedCount : payoutFailedCount}
-              valueColor={"red"}
-              backgroundColor={"pink"}
-            />
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px", maxWidth: "1400px" }}>
+              <DashboardCards
+                label={"Total Initiated Volume"}
+                value={dashboard === "PAYIN" ? payinInitiatedVolume : payoutInitiatedVolume}
+                valueColor={"grey"}
+                backgroundColor={"lightgrey"}
+              />
+              <DashboardCards
+                label={"Total Success Volume"}
+                value={dashboard === "PAYIN" ? payinSuccessVolume : payoutSuccessVolume}
+                valueColor={"green"}
+                backgroundColor={"lightgreen"}
+              />
+              <DashboardCards
+                label={"Total Failed Volume"}
+                value={dashboard === "PAYIN" ? payinFailedVolume : payoutFailedVolume}
+                valueColor={"red"}
+                backgroundColor={"pink"}
+              />
+              <DashboardCards
+                label={"Total Initiated Count"}
+                icon={<EqualizerIcon />}
+                value={dashboard === "PAYIN" ? payinInitiatedCount : payoutInitiatedCount}
+                valueColor={"grey"}
 
-          <div style={{ gridColumn : "1/span 3"}}></div>
-          <DashboardCards
-              label={"Success Rate"}
-              value={
-                dashboard === "PAYIN" ? calculateSuccessRate(payinInitiatedCount, payinSuccessCount) : ""}
-              valueColor={"blue"}
-              backgroundColor={"lightblue"}
-            />
-          </div>
+              />
+              <DashboardCards
+                label={"Total Success Count"}
+                icon={<EqualizerIcon />}
+                value={dashboard === "PAYIN" ? payinSuccessCount : payoutSuccessCount}
+                valueColor={"green"}
+
+              />
+              <DashboardCards
+                label={"Total Failed Count"}
+                icon={<EqualizerIcon />}
+                value={dashboard === "PAYIN" ? payinFailedCount : payoutFailedCount}
+                valueColor={"white"}
+
+              />
+              <DashboardCards
+                label={"Success Rate"}
+                icon={<EqualizerIcon />}
+                className=""
+                value={
+                  dashboard === "PAYIN"
+                    ? calculateSuccessRate(payinInitiatedCount, payinSuccessCount)
+                    : calculateSuccessRate(payoutInitiatedCount, payoutSuccessCount)
+                }
+                valueColor={"blue"}
+              />
+
+            </div>
           </div>
         </>
       ) : (
